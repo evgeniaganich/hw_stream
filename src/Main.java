@@ -15,9 +15,9 @@ public class Main {
     }
 
     public static <T> void findMinMax(Stream<T> stream, Comparator<T> comparator, BiConsumer<T, T> minMaxConsumer) {
-        Optional<T> min = (Optional<T>) stream.min(comparator).orElseGet(null);
-        Optional<T> max = (Optional<T>) stream.max(comparator).orElseGet(null);
-        minMaxConsumer.accept((T) min, (T) max);
+        minMaxConsumer.accept(
+                stream.min(comparator).orElse(null),
+                stream.max(comparator).orElse(null));
     }
 
     public static void task2(List<Integer> list) {
